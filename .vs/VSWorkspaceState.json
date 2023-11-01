@@ -1,7 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\B3",
+    "\\B3\\ClientApp",
+    "\\B3\\ClientApp\\src",
+    "\\B3\\ClientApp\\src\\app",
+    "\\B3\\ClientApp\\src\\app\\home"
   ],
-  "SelectedNode": "\\C:\\VSTS\\B3",
+  "SelectedNode": "\\B3\\B3.sln",
   "PreviewInSolutionExplorer": false
 }
