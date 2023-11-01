@@ -19,7 +19,8 @@ namespace B3.Services
         public InvestidorEntity CalcularInvestimento(InvestidorEntity dadosInvestidor)
         {
             int index = 1;
-            double taxa = 0;
+            double imposto = 0;
+            double rendimento = 0;
             dadosInvestidor.ValorBruto = dadosInvestidor.ValorAplicado;
 
             do
@@ -27,13 +28,14 @@ namespace B3.Services
                 dadosInvestidor.ValorBruto = dadosInvestidor.ValorBruto * (1 + (CDI * TB));
             } while (index < dadosInvestidor.QtdMesesInvestidos);
 
-            taxa = CalcularTaxa(dadosInvestidor.QtdMesesInvestidos);
-            dadosInvestidor.ValorLiquido = dadosInvestidor.ValorBruto - (dadosInvestidor.ValorBruto * taxa);
+            imposto = CalcularImposto(dadosInvestidor.QtdMesesInvestidos);
+            rendimento = dadosInvestidor.ValorBruto - dadosInvestidor.ValorAplicado;
+            dadosInvestidor.ValorLiquido = dadosInvestidor.ValorBruto - (rendimento * imposto);
 
             return dadosInvestidor;
         }
 
-        private double CalcularTaxa(decimal periodo)
+        private double CalcularImposto(decimal periodo)
         {
             if (periodo <= 6)
                 return Imposto.Where(x => x.Key == 6).Select(y => y.Value).FirstOrDefault();
