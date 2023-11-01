@@ -6,6 +6,7 @@ import { ApiHttpService } from '../core/services/api-http';
   templateUrl: './investimento.component.html',
 })
 export class InvestimentoComponent {
+  investimentosCalculados: any;
   constructor(private service: ApiHttpService) {
   }
 
@@ -16,7 +17,7 @@ export class InvestimentoComponent {
   CalcularInvestimento() {
     let dadosInvestimento = { "ValorAplicado": this.valorAplicado, "QtdMesesInvestidos": this.QtdMesesInvestidos };
     this.service.CalcularRendimento("https://localhost:7009/Investimento/CalcularInvestimento", dadosInvestimento).subscribe(result => {
-      this.emplist = result;
+      this.investimentosCalculados = result;
     });
 
     alert("worked");

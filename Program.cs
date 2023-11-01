@@ -1,8 +1,12 @@
+using B3.Interfaces;
+using B3.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IInvestimentoServices, InvestimentoServices>();
 
 var app = builder.Build();
 

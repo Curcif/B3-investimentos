@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace B3.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("/api/[controller]")]
     public class InvestimentoController : ControllerBase
     {
         private readonly ILogger<InvestimentoController> _logger;
@@ -24,7 +24,7 @@ namespace B3.Controllers
         }
 
         [HttpPost]
-        public InvestidorEntity CalcularInvestimento(InvestidorEntity dadosInvestidor) {
+        public ActionResult<InvestidorEntity> CalcularInvestimento(InvestidorEntity dadosInvestidor) {
             return _investimentoServices.CalcularInvestimento(dadosInvestidor);
         }
     }
