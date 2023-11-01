@@ -5,14 +5,33 @@
 <div class="left-box sized300 vertical-margin50">
   <div>
     <label for="valor-inicial" class="label-format0">Valor (R$): </label>
-    <input numeric type="text" name="valor-inicial" value="" [(ngModel)]="valorInvestimento" />
+    <input numeric type="text" name="valor-inicial" value="" [(ngModel)]="valorAplicado" />
   </div>
   <div>
-    <label for="meses-a-calcular" class="label-format0">Meses: </label>
-    <input type="number" min="1" name="meses-a-calcular" value="" [(ngModel)]="mesesCalcular" />
+    <label for="qtd-meses-investidos" class="label-format0">Meses: </label>
+    <input type="number" min="1" name="qtd-meses-investidos" value="" [(ngModel)]="QtdMesesInvestidos" />
   </div>
   <div class="buttons-section">
     <button type="button" class="btn btn-positioning0 btn-warning" (click)="LimparCampos()">Limpar</button>
     <button type="button" class="btn btn-positioning0 btn-success" (click)="CalcularInvestimento()">Calcular</button>
   </div>
+</div>
+
+<div>
+  <table class="table table-bordered">
+    <thead>
+    <th>Valor Bruto</th>
+    <th>Valor Líquido</th>
+    <th>Rendimento</th>
+    <th>Imposto</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of userlist">
+        <td>{{item.ValorBruto}}</td>
+        <td>{{item.ValorLiquido}}</td>
+        <td>{{item.Rendimento}}</td>
+        <td>{{item.Imposto}}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

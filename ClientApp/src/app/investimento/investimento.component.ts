@@ -1,49 +1,38 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { ApiHttpService } from '../core/services/api-http';
 
 @Component({
   selector: 'app-home',
   templateUrl: './investimento.component.html',
 })
-
-export class ConfigService {
-  constructor(private http: HttpClient) { }
-
-  configUrl = 'assets/config.json';
-
-  getConfig() {
-    return this.http.get(this.configUrl);
-  }
-}
-
 export class InvestimentoComponent {
-  valorInvestimento = "";
-  mesesCalcular = "";
+  constructor(private service: ApiHttpService) {
+  }
+
+  emplist: any;
+  valorAplicado = "";
+  QtdMesesInvestidos = "";
 
   CalcularInvestimento() {
+    let dadosInvestimento = { "ValorAplicado": this.valorAplicado, "QtdMesesInvestidos": this.QtdMesesInvestidos };
+    this.service.CalcularRendimento("https://localhost:7009/Investimento/CalcularInvestimento", dadosInvestimento).subscribe(result => {
+      this.emplist = result;
+    });
+
     alert("worked");
     this.ValidarCampos();
   }
 
   ValidarCampos() {
     alert("validou");
-    var teste = this.valorInvestimento;
+    var teste = this.valorAplicado;
     alert(teste);
     return 0;
   }
 
   LimparCampos() {
-    this.valorInvestimento = "";
-    this.mesesCalcular = "";
+    this.valorAplicado = "";
+    this.QtdMesesInvestidos = "";
     alert("Campos resetados com sucesso!")
   }
-
-  showConfig() {
-    this.configService.getConfig()
-      .subscribe((data: Config) => this.config = {
-        demoUrl: data['demoUrl'],
-        filename: data['filename']
-      });
-  }
 }
-

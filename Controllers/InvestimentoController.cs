@@ -24,7 +24,7 @@ namespace B3.Controllers
         }
 
         [HttpPost]
-        public InvestidorEntity Post(InvestidorEntity dadosInvestidor) {
+        public InvestidorEntity CalcularInvestimento(InvestidorEntity dadosInvestidor) {
             return _investimentoServices.CalcularInvestimento(dadosInvestidor);
         }
     }

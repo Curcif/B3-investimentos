@@ -10,6 +10,7 @@ import { InvestimentoComponent } from './investimento/investimento.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { NumericDirective } from "./helpers/numeric.directive";
+import { ApiHttpService } from './core/services/api-http';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { NumericDirective } from "./helpers/numeric.directive";
       { path: 'fetch-data', component: FetchDataComponent },
     ])
   ],
-  providers: [],
+  providers: [ApiHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
