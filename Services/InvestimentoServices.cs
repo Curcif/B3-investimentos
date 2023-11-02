@@ -19,18 +19,18 @@ namespace B3.Services
         public InvestidorEntity CalcularInvestimento(InvestidorEntity dadosInvestidor)
         {
             int index = 1;
-            double imposto = 0;
-            double rendimento = 0;
             dadosInvestidor.ValorBruto = dadosInvestidor.ValorAplicado;
 
-            do
+            while (index <= dadosInvestidor.QtdMesesInvestidos)
             {
                 dadosInvestidor.ValorBruto = dadosInvestidor.ValorBruto * (1 + (CDI * TB));
-            } while (index < dadosInvestidor.QtdMesesInvestidos);
+                index++;
+            }
 
-            imposto = CalcularImposto(dadosInvestidor.QtdMesesInvestidos);
-            rendimento = dadosInvestidor.ValorBruto - dadosInvestidor.ValorAplicado;
-            dadosInvestidor.ValorLiquido = dadosInvestidor.ValorBruto - (rendimento * imposto);
+            dadosInvestidor.Imposto = CalcularImposto(dadosInvestidor.QtdMesesInvestidos);
+            dadosInvestidor.Rendimento = dadosInvestidor.ValorBruto - dadosInvestidor.ValorAplicado;
+            dadosInvestidor.ValorLiquido = dadosInvestidor.ValorBruto - (dadosInvestidor.Rendimento * dadosInvestidor.Imposto);
+
 
             return dadosInvestidor;
         }
