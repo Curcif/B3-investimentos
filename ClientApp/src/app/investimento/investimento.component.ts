@@ -14,9 +14,11 @@ export class InvestimentoComponent {
   valorAplicado = "";
   QtdMesesInvestidos = "";
 
+  options = { "headers": "Access-Control-Allow-Origin: https://localhost:7009"}
+
   CalcularInvestimento() {
     let dadosInvestimento = { "ValorAplicado": this.valorAplicado, "QtdMesesInvestidos": this.QtdMesesInvestidos };
-    this.service.CalcularRendimento("https://localhost:7009/Investimento/CalcularInvestimento", dadosInvestimento).subscribe(result => {
+    this.service.CalcularRendimento("https://localhost:7009/Investimento/CalcularInvestimento", dadosInvestimento, this.options).subscribe(result => {
       this.investimentosCalculados = result;
     });
 

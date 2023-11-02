@@ -1,7 +1,18 @@
 using B3.Interfaces;
 using B3.Services;
 
+var AllowSpecificOrigins = "_allowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options => 
+{
+    options.AddPolicy(name: AllowSpecificOrigins,
+        policy =>
+        {
+            policy.WithOrigins("https://localhost:7009",
+                               "https://localhost:44438");
+        });
+});
 
 // Add services to the container.
 
@@ -21,10 +32,11 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
+app.UseCors(AllowSpecificOrigins);
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller}/{action=Index}/{id?}");
+    pattern: "{controller}/{action=Index}/{id?}").RequireCors(AllowSpecificOrigins);
 
 app.MapFallbackToFile("index.html");
 

@@ -5,11 +5,11 @@
 <div class="left-box sized300 vertical-margin50">
   <div>
     <label for="valor-inicial" class="label-format0">Valor (R$): </label>
-    <input numeric type="text" name="valor-inicial" value="" [(ngModel)]="valorAplicado" />
+    <input numeric type="text" id="valor-inicial" name="valor-inicial" value="" [(ngModel)]="valorAplicado" />
   </div>
   <div>
     <label for="qtd-meses-investidos" class="label-format0">Meses: </label>
-    <input type="number" min="1" name="qtd-meses-investidos" value="" [(ngModel)]="QtdMesesInvestidos" />
+    <input type="number" min="1" id="qtd-meses-investidos" name="qtd-meses-investidos" value="" [(ngModel)]="QtdMesesInvestidos" />
   </div>
   <div class="buttons-section">
     <button type="button" class="btn btn-positioning0 btn-warning" (click)="LimparCampos()">Limpar</button>

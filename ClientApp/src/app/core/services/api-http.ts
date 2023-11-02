@@ -7,8 +7,8 @@ export class ApiHttpService {
     private http: HttpClient
   ) { }
 
-  CalcularRendimento(url: string, dadosInvestimento: any) {
-    return this.http.post(url, dadosInvestimento)
+  CalcularRendimento(url: string, dadosInvestimento: any, options?: any) {
+    return this.http.post(url, dadosInvestimento, options)
   }
 
   public get(url: string, options?: any) {
