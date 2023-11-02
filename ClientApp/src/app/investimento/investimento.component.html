@@ -20,18 +20,21 @@
 <div>
   <table class="table table-bordered">
     <thead>
-    <th>Valor Bruto</th>
-    <th>Valor Líquido</th>
-    <th>Rendimento</th>
-    <th>Imposto</th>
+      <tr>
+        <th>Valor Aplicado</th>
+        <th>Valor Bruto</th>
+        <th>Valor Líquido</th>
+        <th>Rendimento</th>
+        <th>Imposto (sob o rendimento)</th>
+      </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of investimentosCalculados">
-        <td>{{item.ValorAplicado}}</td>
-        <td>{{item.ValorBruto}}</td>
-        <td>{{item.ValorLiquido}}</td>
-        <td>{{item.Rendimento}}</td>
-        <td>{{item.Imposto}}</td>
+      <tr>
+        <td>{{investimentosCalculados.valorAplicado}}</td>
+        <td>{{investimentosCalculados.valorBruto}}</td>
+        <td>{{investimentosCalculados.valorLiquido}}</td>
+        <td>{{investimentosCalculados.rendimento}}</td>
+        <td>{{investimentosCalculados.imposto}}</td>
       </tr>
     </tbody>
   </table>
