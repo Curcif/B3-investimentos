@@ -33,4 +33,38 @@ export class NumericDirective {
   onPaste(event: ClipboardEvent) {
     this.run(this.el.nativeElement.value);
   }
+
+  ValidarCamposNulosOuVazios(valores: string[]) {
+    for (var i = 0; i < valores.length; i++) {
+      if (valores[i] != null && valores[i].trim() != "") {
+        alert("Por favor, preencha os campos corretamente!");
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  //Valida se contém somente números e positivos
+  ValidarNumeros(valores: string[]) {
+    let regex = /^[-+]?[0-9]+\.[0-9]+$/;
+    let isValidated;
+
+    for (var i = 0; i < valores.length; i++) {
+      isValidated = regex.test(valores[i]);
+
+      if (!isValidated) {
+        alert("formato do valor inválido: informe apenas números")
+        return false;
+      }
+
+      if (Number(valores[i]) < 1) {
+        alert("por favor, informe o valor positivo e superior à 0")
+        return false;
+      }
+    }
+
+    return true;
+  }
+
 }
