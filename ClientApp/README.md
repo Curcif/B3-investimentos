@@ -10,8 +10,10 @@ A porta utilizada para o ambiente AngularCLI é "http://localhost:44438/", enqua
 Também é possível testar, servindo-se do comando `ng serve` no propósito de testes em um ambiente DEV.
 
 ## Estruturas desenvolvidas
+Considerando que o teste será realizado utilizando a IDE Visual Studio/PRO/Enterprise/Community, basta pressionar "F5" ou clicar no "PLAY" da IDE para que a aplicação seja iniciada.
+No primeiro momento, aparecerá uma tela de "Loading" que redicionará a aplicação para o sistema de rotas do AngularCLI. Neste ponto, basta esperar até que a aplicação carregue completamente.
 
-A interface contempla dois inputs e dois botões:
+A interface carregada contempla dois inputs e dois botões:
 1. Informar o valor inicial do investimento;
 2. informar a quantidade desejada de meses para uma previsão de redimento baseado no valor/tempo;
 3. Botão "Limpar", que reseta as informações previamente preenchidas nos inputs para um repreenchimento mas ágil;
