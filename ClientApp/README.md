@@ -11,9 +11,11 @@ Também é possível testar, servindo-se do comando `ng serve` no propósito de 
 
 ## Estruturas desenvolvidas
 
-A interface contempla dois inputs:
+A interface contempla dois inputs e dois botões:
 1. Informar o valor inicial do investimento;
 2. informar a quantidade desejada de meses para uma previsão de redimento baseado no valor/tempo;
+3. Botão "Limpar", que reseta as informações previamente preenchidas nos inputs para um repreenchimento mas ágil;
+4. Botão "Calcular", que deve ser acionado assim que os valores dos campos estiverem preenchidos conforme prestensão do usuário;
  
 As validações de inputs consistem em checar campos vazios, nulos e numeros positivos, sempre informando ao usuário caso haja alguma intercorrência fora do esperado pelo sistema.
 As validações de backend consistem em validar valores, impostos e rendimento
@@ -28,7 +30,7 @@ O resultado final esperado é devolver à tela para que o usuário visualize as 
  ## Informações Relevantes
 
  Devido às aplicações AngularCLI e .NET CORE estarem dentro da mesma solução, foi necessário fazer uma configuração no CORS para que o domínio "http://localhost:44438/" se comunique corretamente com "http://localhost:7009/".
- Por ser uma aplicação de teste, o quesito segurança não está sendo coniderado neste desenvolvimento inicial: o CORS aceita qualquer requisição, independente da origem, desde que respeite os critérios da validação.
+ Por ser uma aplicação de teste, o quesito segurança não está sendo coniderado neste desenvolvimento inicial: o CORS aceita qualquer requisição (independente da origem), desde que respeite os critérios da validação.
  
  Para auxiliar no desenvolvimento, foi desenvolvido um diretório 'helper' (aplicação angular) que contempla métodos que poderão ser compartilhados por toda a aplicação front-end
  O sistema busca respeitar os conceitos do Pattern SOLID, portanto há segmentação para o conceito de responsabilidade unica, reaproveitamento de código, ajustes de inejção de dependencia (config: program.cs) e inversão de controle (para promover desacoplamentos) com uso de interfaces.
