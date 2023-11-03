@@ -18,6 +18,8 @@ namespace B3.Services
 
         public InvestidorEntity CalcularInvestimento(InvestidorEntity dadosInvestidor)
         {
+            ValidarDadosInvestidor(dadosInvestidor);
+
             int index = 1;
             dadosInvestidor.ValorBruto = dadosInvestidor.ValorAplicado;
 
@@ -33,6 +35,21 @@ namespace B3.Services
 
 
             return dadosInvestidor;
+        }
+
+        private InvestidorEntity ValidarDadosInvestidor(InvestidorEntity dadosInvestidor)
+        {
+            if (dadosInvestidor.ValorAplicado <= 1)
+            {
+                throw new Exception($"Valor Aplicado inválido: {dadosInvestidor.ValorAplicado}. Valor precisa ser maior que zero");
+            }
+
+            if (dadosInvestidor.QtdMesesInvestidos <= 1)
+            {
+                throw new Exception($"Quantidade de meses inválida: {dadosInvestidor.ValorAplicado}. Valor precisa ser maior que zero");
+            }
+
+            return new InvestidorEntity();
         }
 
         private double CalcularImposto(decimal periodo)
