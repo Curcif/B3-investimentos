@@ -37,8 +37,6 @@ export class InvestimentoComponent {
     return false;
   }
 
-  
-
   LimparCampos() {
     this.valorAplicado = "";
     this.QtdMesesInvestidos = "";
