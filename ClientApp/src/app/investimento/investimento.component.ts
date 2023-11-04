@@ -16,6 +16,7 @@ export class InvestimentoComponent {
   QtdMesesInvestidos = "";
 
   CalcularInvestimento() {
+    $(".money").mask("#,##0.00", { reverse: true });
     let valoresArr: string[] = [this.ValorAplicado, this.QtdMesesInvestidos];
     let dadosInvestimento = { "ValorAplicado": this.ValorAplicado, "QtdMesesInvestidos": this.QtdMesesInvestidos };
 
