@@ -5,7 +5,7 @@
 <div class="left-box sized300 vertical-margin50">
   <div>
     <label for="valor-inicial" class="label-format0">Valor (R$): </label>
-    <input numeric type="text" id="valor-inicial" class="money" name="valor-inicial" value="" [(ngModel)]="ValorAplicado" maxlength="18" />
+    <input type="text" id="valor-inicial" class="money" name="valor-inicial" value="" [(ngModel)]="ValorAplicado" (blur)="BlurValorAplicado()" maxlength="18" />
   </div>
   <div>
     <label for="qtd-meses-investidos" class="label-format0">Meses: </label>

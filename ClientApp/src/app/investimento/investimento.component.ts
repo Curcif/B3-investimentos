@@ -22,6 +22,10 @@ export class InvestimentoComponent implements OnInit {
     });
   }
 
+  BlurValorAplicado(): void {
+    this.ValorAplicado = $(".money").val();
+  }
+
   CalcularInvestimento() {
     let valoresArr: string[] = [this.ValorAplicado, this.QtdMesesInvestidos];
     let dadosInvestimento = { "ValorAplicado": this.ValorAplicado, "QtdMesesInvestidos": this.QtdMesesInvestidos };
