@@ -1,22 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiHttpService } from '../core/services/api-http';
 import { NumericDirective } from '../helpers/numeric.directive';
+declare var $: any;
 
 @Component({
   selector: 'app-investimento',
   templateUrl: './investimento.component.html',
   styleUrls: ['./investimento.component.css']
 })
-export class InvestimentoComponent {
+export class InvestimentoComponent implements OnInit {
   investimentosCalculados: any;
   constructor(private service: ApiHttpService, private numericValidations: NumericDirective) {
   };
 
   ValorAplicado: string = "";
   QtdMesesInvestidos = "";
+  
+  ngOnInit() : void{
+    $(".money").on('keydown', function () {
+      $(".money").mask("##0.00", { reverse: true });
+    });
+  }
 
   CalcularInvestimento() {
-    $(".money").mask("#,##0.00", { reverse: true });
     let valoresArr: string[] = [this.ValorAplicado, this.QtdMesesInvestidos];
     let dadosInvestimento = { "ValorAplicado": this.ValorAplicado, "QtdMesesInvestidos": this.QtdMesesInvestidos };
 
@@ -45,4 +51,8 @@ export class InvestimentoComponent {
     this.QtdMesesInvestidos = "";
     alert("Campos resetados com sucesso!")
   };
+
+  ChecarCamposPreenchidos(): boolean {
+    return this.ValorAplicado == "" || this.QtdMesesInvestidos == "";
+  }
 }

@@ -5,15 +5,15 @@
 <div class="left-box sized300 vertical-margin50">
   <div>
     <label for="valor-inicial" class="label-format0">Valor (R$): </label>
-    <input numeric type="text" id="valor-inicial" class="money" name="valor-inicial" value="" [(ngModel)]="ValorAplicado" />
+    <input numeric type="text" id="valor-inicial" class="money" name="valor-inicial" value="" [(ngModel)]="ValorAplicado" maxlength="18" />
   </div>
   <div>
     <label for="qtd-meses-investidos" class="label-format0">Meses: </label>
-    <input type="number" min="1" id="qtd-meses-investidos" name="qtd-meses-investidos" value="" [(ngModel)]="QtdMesesInvestidos" />
+    <input type="text" id="qtd-meses-investidos" name="qtd-meses-investidos" value="" [(ngModel)]="QtdMesesInvestidos" maxlength="3" />
   </div>
   <div class="buttons-section">
     <button type="button" class="btn btn-positioning0 btn-warning" (click)="LimparCampos()">Limpar</button>
-    <button type="button" class="btn btn-positioning0 btn-success" (click)="CalcularInvestimento()">Calcular</button>
+    <button type="button" class="btn btn-positioning0 btn-success" (click)="CalcularInvestimento()" [disabled]="ChecarCamposPreenchidos()">Calcular</button>
   </div>
 </div>
 
