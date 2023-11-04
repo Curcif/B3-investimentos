@@ -1,16 +1,17 @@
 using B3.Entidades;
 using B3.Interfaces;
+using B3.Services;
 
 namespace Test.Investimento
 {
     public class InvestimentoTest
     {
-        private readonly IInvestimentoServices _services;
+        private readonly IInvestimentoServices _services = new InvestimentoServices();
 
-        public InvestimentoTest(IInvestimentoServices services)
-        {
-            _services = services;
-        }
+        //public InvestimentoTest(IInvestimentoServices services)
+        //{
+        //    _services = services;
+        //}
 
         [SetUp]
         public void Setup()
@@ -86,15 +87,14 @@ namespace Test.Investimento
         {
             InvestidorEntity dadosInvestidor = new InvestidorEntity()
             {
-                ValorAplicado = 100,
-                QtdMesesInvestidos = 0,
+                ValorAplicado = 0,
+                QtdMesesInvestidos = 2,
                 Imposto = 0,
                 Rendimento = 0
             };
 
-            _services.CalcularInvestimento(dadosInvestidor);
-
-            Assert.Fail($"Valor Aplicado inválido: {dadosInvestidor.ValorAplicado}. Valor precisa ser maior que zero");
+            var ex = Assert.Throws<ArgumentException>(() => _services.CalcularInvestimento(dadosInvestidor));
+            Assert.That(ex.Message, Is.EqualTo($"Valor Aplicado inválido: {dadosInvestidor.ValorAplicado}. Valor precisa ser maior que zero"));
         }
 
         [Test]
@@ -108,9 +108,8 @@ namespace Test.Investimento
                 Rendimento = 0
             };
 
-            _services.CalcularInvestimento(dadosInvestidor);
-
-            Assert.Fail($"Quantidade de meses inválida: {dadosInvestidor.ValorAplicado}. Valor precisa ser maior que zero");
+            var ex = Assert.Throws<ArgumentException>(() => _services.CalcularInvestimento(dadosInvestidor));
+            Assert.That(ex.Message, Is.EqualTo($"Quantidade de meses inválida: {dadosInvestidor.ValorAplicado}. Valor precisa ser maior que zero"));
         }
 
         [Test]
@@ -124,9 +123,8 @@ namespace Test.Investimento
                 Rendimento = 0
             };
 
-            _services.CalcularInvestimento(dadosInvestidor);
-
-            Assert.Fail($"Valor Aplicado inválido: {dadosInvestidor.ValorAplicado}. Valor precisa ser maior que zero");
+            var ex = Assert.Throws<ArgumentException>(() => _services.CalcularInvestimento(dadosInvestidor));
+            Assert.That(ex.Message, Is.EqualTo($"Valor Aplicado inválido: {dadosInvestidor.ValorAplicado}. Valor precisa ser maior que zero"));
         }
     }
 }

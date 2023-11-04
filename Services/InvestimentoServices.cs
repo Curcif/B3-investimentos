@@ -41,12 +41,12 @@ namespace B3.Services
         {
             if (dadosInvestidor.ValorAplicado <= 1)
             {
-                throw new Exception($"Valor Aplicado inválido: {dadosInvestidor.ValorAplicado}. Valor precisa ser maior que zero");
+                throw new ArgumentException($"Valor Aplicado inválido: {dadosInvestidor.ValorAplicado}. Valor precisa ser maior que zero");
             }
 
             if (dadosInvestidor.QtdMesesInvestidos <= 1)
             {
-                throw new Exception($"Quantidade de meses inválida: {dadosInvestidor.ValorAplicado}. Valor precisa ser maior que zero");
+                throw new ArgumentException($"Quantidade de meses inválida: {dadosInvestidor.ValorAplicado}. Valor precisa ser maior que zero");
             }
 
             return new InvestidorEntity();
