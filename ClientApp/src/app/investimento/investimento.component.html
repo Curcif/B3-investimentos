@@ -5,7 +5,7 @@
 <div class="left-box sized300 vertical-margin50">
   <div>
     <label for="valor-inicial" class="label-format0">Valor (R$): </label>
-    <input numeric type="text" id="valor-inicial" name="valor-inicial" value="" [(ngModel)]="valorAplicado" />
+    <input numeric type="text" id="valor-inicial" name="valor-inicial" value="" [(ngModel)]="ValorAplicado" />
   </div>
   <div>
     <label for="qtd-meses-investidos" class="label-format0">Meses: </label>
@@ -18,24 +18,26 @@
 </div>
 
 <div>
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Valor Aplicado</th>
-        <th>Valor Bruto</th>
-        <th>Valor Líquido</th>
-        <th>Rendimento</th>
-        <th>Imposto (sob o rendimento)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>{{investimentosCalculados.valorAplicado}}</td>
-        <td>{{investimentosCalculados.valorBruto}}</td>
-        <td>{{investimentosCalculados.valorLiquido}}</td>
-        <td>{{investimentosCalculados.rendimento}}</td>
-        <td>{{investimentosCalculados.imposto * 100}}% </td>
-      </tr>
-    </tbody>
-  </table>
+  <ng-container *ngIf="investimentosCalculados">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Valor Aplicado</th>
+          <th>Valor Bruto</th>
+          <th>Valor Líquido</th>
+          <th>Rendimento</th>
+          <th>Imposto (sob o rendimento)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>R$ {{investimentosCalculados.valorAplicado.toFixed(2)}}</td>
+          <td>R$ {{investimentosCalculados.valorBruto.toFixed(2)}}</td>
+          <td>R$ {{investimentosCalculados.valorLiquido.toFixed(2)}}</td>
+          <td>R$ {{investimentosCalculados.rendimento.toFixed(2)}}</td>
+          <td>{{investimentosCalculados.imposto * 100}}% </td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
 </div>

@@ -4,7 +4,8 @@ Este Projeto foi inicialmente construido com a versão 12.0.2 do Angular CLI, e 
 
 ## Ambiente de Desenvolvimento
 
-Antes de testar, certifique-se de possuir o NodeJS (nodejs.org) devidamente instalado.
+* Antes de testar, certifique-se de possuir o NodeJS (nodejs.org) devidamente instalado.
+* Caso haja algum problema ao rodar o sistema, será necessário ir via prompt de comando até a pasta "ClientApp" e rodar o comando "npm install";
 Este software foi desenvolvido utilizando a IDE Visual Studio Enterprise. Recomenda-se utilizar a mesma IDE ou equivalente para maior chance de sucesso nos testes.
 A porta utilizada para o ambiente AngularCLI é "http://localhost:44438/", enquanto para chamadas REST (.NET CORE), utiliza-se o "http://localhost:7009/"
 Também é possível testar, servindo-se do comando `ng serve` no propósito de testes em um ambiente DEV.

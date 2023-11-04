@@ -7,7 +7,6 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { InvestimentoComponent } from './investimento/investimento.component';
-import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { NumericDirective } from "./helpers/numeric.directive";
 import { ApiHttpService } from './core/services/api-http';
@@ -18,7 +17,6 @@ import { ApiHttpService } from './core/services/api-http';
     NumericDirective,
     NavMenuComponent,
     InvestimentoComponent,
-    CounterComponent,
     FetchDataComponent
   ],
   imports: [
@@ -27,11 +25,10 @@ import { ApiHttpService } from './core/services/api-http';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: InvestimentoComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
     ])
   ],
-  providers: [ApiHttpService],
+  providers: [ApiHttpService, NumericDirective],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

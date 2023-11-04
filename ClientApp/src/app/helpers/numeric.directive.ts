@@ -1,4 +1,6 @@
-import { Directive, ElementRef, HostListener, Input } from "@angular/core";
+import { Directive, ElementRef, HostListener, Injectable, Input } from "@angular/core";
+
+@Injectable()
 
 @Directive({
   selector: "[numeric]"
@@ -36,7 +38,7 @@ export class NumericDirective {
 
   ValidarCamposNulosOuVazios(valores: string[]) {
     for (var i = 0; i < valores.length; i++) {
-      if (valores[i] != null && valores[i].trim() != "") {
+      if (valores[i] == null || valores[i].toString().trim() == "") {
         alert("Por favor, preencha os campos corretamente!");
         return false;
       }
@@ -47,11 +49,13 @@ export class NumericDirective {
 
   //Valida se contém somente números e positivos
   ValidarNumeros(valores: string[]) {
-    let regex = /^[-+]?[0-9]+\.[0-9]+$/;
+    let regexCurrency = /^[0-9]+\.[0-9]+$/;
+    let regexCurrencyInt = /^[0-9]+$/;
+    //let regex = /^[0-9][0-9,]*[0-9]\.?[0-9]{0,2}$/;
     let isValidated;
-
     for (var i = 0; i < valores.length; i++) {
-      isValidated = regex.test(valores[i]);
+
+      isValidated = regexCurrency.test(valores[i]) == true || regexCurrencyInt.test(valores[i]) == true;
 
       if (!isValidated) {
         alert("formato do valor inválido: informe apenas números")

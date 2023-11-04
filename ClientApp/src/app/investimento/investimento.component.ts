@@ -1,29 +1,31 @@
 import { Component } from '@angular/core';
 import { ApiHttpService } from '../core/services/api-http';
 import { NumericDirective } from '../helpers/numeric.directive';
+
 @Component({
-  selector: 'app-home',
+  selector: 'app-investimento',
   templateUrl: './investimento.component.html',
+  styleUrls: ['./investimento.component.css']
 })
 export class InvestimentoComponent {
   investimentosCalculados: any;
   constructor(private service: ApiHttpService, private numericValidations: NumericDirective) {
-  }
+  };
 
-  valorAplicado = "";
+  ValorAplicado: string = "";
   QtdMesesInvestidos = "";
 
   CalcularInvestimento() {
-    let valoresArr: string[] = [this.valorAplicado, this.QtdMesesInvestidos];
-    let dadosInvestimento = { "ValorAplicado": this.valorAplicado, "QtdMesesInvestidos": this.QtdMesesInvestidos };
+    let valoresArr: string[] = [this.ValorAplicado, this.QtdMesesInvestidos];
+    let dadosInvestimento = { "ValorAplicado": this.ValorAplicado, "QtdMesesInvestidos": this.QtdMesesInvestidos };
 
     if (this.ValidarCampos(valoresArr)) {
       this.service.CalcularRendimento("https://localhost:7009/Investimento/CalcularInvestimento", dadosInvestimento).subscribe(result => {
         this.investimentosCalculados = result;
       });
 
-    };
-  }
+    }
+  };
 
   ValidarCampos(valoresArr: string[]) {
 
@@ -35,11 +37,11 @@ export class InvestimentoComponent {
     }
 
     return false;
-  }
+  };
 
   LimparCampos() {
-    this.valorAplicado = "";
+    this.ValorAplicado = "";
     this.QtdMesesInvestidos = "";
     alert("Campos resetados com sucesso!")
-  }
+  };
 }
